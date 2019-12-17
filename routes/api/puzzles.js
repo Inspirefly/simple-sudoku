@@ -29,7 +29,7 @@ function changeJsonRowToBox(jsonArr) {
     }
   }
   console.log(puzzle);
-  return JSON.stringify(puzzle);
+  return puzzle;
 }
 
 module.exports = router;

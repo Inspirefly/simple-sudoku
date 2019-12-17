@@ -14,7 +14,7 @@ export default function(state = initialState, action) {
       }
     case FETCH_SOLVED:
       return {
-        ... state,
+        ...state,
         solved: action.payload
       }
     default:
