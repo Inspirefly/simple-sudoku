@@ -1,0 +1,21 @@
+#board {
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr;
+  width: 50%;
+  margin: 10em auto;
+}
+
+.row-board {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  border-left: 2px solid black;
+  border-right: 2px solid black;
+}
+
+#first-row-board {
+  border-top: 2px solid black;
+}
+
+#third-row-board {
+  border-bottom: 2px solid black;
+}
