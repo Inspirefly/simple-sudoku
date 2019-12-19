@@ -1,9 +1,11 @@
-import { FETCH_UNSOLVED, FETCH_SOLVED, INPUT_NUM } from '../actions/types';
+import { FETCH_UNSOLVED, FETCH_SOLVED, INPUT_NUM, CHECK_MISTAKES, SOLVE } from '../actions/types';
 
 const initialState = {
   unsolved: [],
   solved: [],
-  user: []
+  user: [],
+  checkMistakes: false,
+  solve: false
 }
 
 export default function(state = initialState, action) {
@@ -31,10 +33,19 @@ export default function(state = initialState, action) {
           user[location0][location1] = ' ';
         }
       }
-
       return {
         ...state,
         user
+      }
+    case CHECK_MISTAKES:
+      return {
+        ...state,
+        checkMistakes: !state.checkMistakes
+      }
+    case SOLVE:
+      return {
+        ...state,
+        solve: !state.solve
       }
     default:
       return state;

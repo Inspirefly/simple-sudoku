@@ -1,4 +1,4 @@
-import { FETCH_UNSOLVED, FETCH_SOLVED, INPUT_NUM } from './types';
+import { FETCH_UNSOLVED, FETCH_SOLVED, INPUT_NUM, CHECK_MISTAKES, SOLVE } from './types';
 
 export const fetchUnsolved = (num, difficulty) => dispatch => {
   fetch(`/api/puzzles/${difficulty}/unsolved/${num}`)
@@ -25,3 +25,11 @@ export const inputNum = num => (dispatch, getState) => {
     payload: { location, num }
   });
 }
+
+export const checkMistakes = () => ({
+  type: CHECK_MISTAKES
+});
+
+export const solve = () => ({
+  type: SOLVE
+});
