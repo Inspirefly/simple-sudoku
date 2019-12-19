@@ -25,6 +25,7 @@ function App(props) {
 
   return (
     <div className="app">
+      <h1>Simple Sudoku</h1>
       <Board />
       <SideButtons />
     </div>

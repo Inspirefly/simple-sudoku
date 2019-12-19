@@ -2,3 +2,16 @@
  display: grid;
  grid-template-columns: 10% 10% 1fr 10% 10%;
 }
+
+.app h1 {
+  grid-column: 3 / 4;
+  text-align: center;
+  font-size: 3rem;
+  margin-top: 5%;
+}
+
+@media (max-width: 1300px) {
+  .app {
+    display: block;
+  }
+}

@@ -17,7 +17,7 @@ function Cell(props) {
   }
 
   if (props.isSelectedCell) {
-    backgroundColor.backgroundColor = 'lightgray';
+    backgroundColor.backgroundColor = '#eaeaea';
   }
 
   let fontColor = {
