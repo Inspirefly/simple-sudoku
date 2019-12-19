@@ -1,8 +1,10 @@
 #board {
   display: grid;
   grid-template-rows: 1fr 1fr 1fr;
-  width: 50%;
+  width: 100%;
+  max-width: 700px;
   margin: 10em auto;
+  grid-column: 3 / 4; 
 }
 
 .row-board {

@@ -1,4 +1,11 @@
-#cell {
+.cell {
   border: 1px solid rgba(0, 0, 0, 0.25);
   text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cell-number {
+  position: absolute;
 }

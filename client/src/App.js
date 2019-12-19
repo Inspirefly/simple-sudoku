@@ -1,16 +1,32 @@
-import React from 'react';
-import { Provider } from 'react-redux';
-import store from './redux/store';
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
+import { inputNum } from './redux/actions/boardAction';
 import Board from './components/Board';
+import SideButtons from './components/SideButtons';
+import './css/App.css';
 
 function App(props) {
+  useEffect(() => {
+    const keyDown = (e) => {
+      if (e.key === 'Backspace' || e.key === 'Delete') {
+        props.inputNum(' ');
+      } else if (!isNaN(e.key) && e.key !== '0') {
+        props.inputNum(e.key);
+      }
+    }
+
+    document.addEventListener("keydown", keyDown);
+    return () => {
+      document.removeEventListener("keydown", keyDown);
+    };
+  }, []);
+
   return (
-    <Provider store={store}>
-      <div className="app">
-        <Board />
-      </div>
-    </Provider>
+    <div className="app">
+      <Board />
+      <SideButtons />
+    </div>
   );
 }
 
-export default App;
+export default connect(null, {inputNum})(App);
