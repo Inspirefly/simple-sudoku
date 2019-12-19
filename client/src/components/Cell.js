@@ -2,8 +2,6 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { setLocation } from '../redux/actions/cellAction';
 import '../css/Cell.css';
-import CellNumber from './CellNumber';
-import PencilBox from './PencilBox';
 
 function Cell(props) {
   let origCell;
@@ -24,19 +22,22 @@ function Cell(props) {
 
   return (
     <div className="cell" onClick={setLocation} style={backgroundColor}>
-      <PencilBox origCell={origCell} location={props.location} />
-      <CellNumber origCell={origCell} location={props.location} />
+      <div className="cell-number">{origCell ? <strong>{props.num}</strong> : props.num}</div>
     </div>
   );
 }
 
 const mapStateToProps = (state, ownProps) => {
+  let num = ' ';
+  if (ownProps.location && state.puzzles.user.length > 0)
+    num = state.puzzles.user[ownProps.location[0]][ownProps.location[1]];
   let isSelectedCell = false; 
   if (JSON.stringify(state.cells.selectedCell) === JSON.stringify(ownProps.location))
     isSelectedCell = true;
   return ({
     unsolved: state.puzzles.unsolved,
     isSelectedCell,
+    num
   });
 };
 

@@ -6,5 +6,3 @@ export const INPUT_NUM = 'INPUT_NUM';
 
 // CELL ACTIONS
 export const SET_LOCATION = 'SET_LOCATION';
-export const TOGGLE_PENCIL = 'TOGGLE_PENCIL';
-export const PENCIL_NUM = 'PENCIL_NUM';
