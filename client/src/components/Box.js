@@ -4,16 +4,14 @@ import Cell from './Cell'
 import '../css/Box.css'
 
 function Box(props) {
-
   let rows = [];
   let row = [];
-  if (props.puzzle) {
-    for (let i = 0; i < 9; i++) {
-      row.push(<Cell key={uuidv4()} num={props.puzzle[i]} location={[props.boxNum, i]}/>);
-      if ((i + 1) % 3 === 0) {
-        rows.push(row);
-        row = [];
-      }
+
+  for (let i = 0; i < 9; i++) {
+    row.push(<Cell key={uuidv4()} location={[props.boxNum, i]}/>);
+    if ((i + 1) % 3 === 0) {
+      rows.push(row);
+      row = [];
     }
   }
 

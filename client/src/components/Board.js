@@ -20,7 +20,7 @@ function Board(props)  {
   let rows = [];
   let row = [];
   for (let i = 0; i < 9; i++) {
-    row.push(<Box key={uuidv4()} puzzle={props.user[i]} boxNum={i}/>);
+    row.push(<Box key={uuidv4()} boxNum={i}/>);
     if ((i + 1) % 3 === 0) {
       rows.push(row);
       row = [];
@@ -42,6 +42,6 @@ function Board(props)  {
   );
 }
 
-const mapStateToProps = state => ({user: state.puzzles.user, solved: state.puzzles.solved});
+const mapStateToProps = state => ({solved: state.puzzles.solved});
 const mapDispatchToProps = {fetchUnsolved, fetchSolved};
 export default connect(mapStateToProps, mapDispatchToProps)(Board);

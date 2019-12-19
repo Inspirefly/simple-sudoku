@@ -1,11 +1,13 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import { setLocation } from '../redux/actions/cellAction';
 import '../css/Cell.css';
 import PencilCell from './PencilCell';
 
 function Cell(props) {
-  const [origCell, setOrigCell] = useState(props.unsolved[props.location[0]][props.location[1]] !== ' ');
+  let origCell;
+  if (props.location && props.unsolved.length > 0)
+    origCell = props.unsolved[props.location[0]][props.location[1]] !== ' ';
 
   const setLocation = () => {
     props.setLocation(props.location)
@@ -27,6 +29,14 @@ function Cell(props) {
   );
 }
 
-
-const mapStateToProps = state => ({unsolved: state.puzzles.unsolved, selectedCell: state.cells.selectedCell});
+const mapStateToProps = (state, ownProps) => {
+  let num = ' ';
+  if (ownProps.location && state.puzzles.user.length > 0)
+    num = state.puzzles.user[ownProps.location[0]][ownProps.location[1]];
+  return ({
+    unsolved: state.puzzles.unsolved,
+    selectedCell: state.cells.selectedCell,
+    num
+  });
+};
 export default connect(mapStateToProps, {setLocation})(Cell);

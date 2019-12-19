@@ -12,7 +12,7 @@ function PencilCell(props) {
     display.opacity = '0.0';
   }
 
-  const cells = props.pencilCells[props.location[0]][props.location[1]];
+  let cells = JSON.parse(props.cells);
   const cellItems = cells.map(num => (
     <div key={uuidv4()}>{num === ' ' ? '\xA0' : num}</div>
   ));
@@ -24,5 +24,10 @@ function PencilCell(props) {
   );
 }
 
-const mapStateToProps = state => ({pencilCells: state.cells.pencilCells});
+const mapStateToProps = (state, ownProps) => {
+  // Stringify because redux rerenders component based on shallow copy (===) which will always
+  // return false with new arrays, even if contents are the same, since the references aren't
+  let cells = JSON.stringify(state.cells.pencilCells[ownProps.location[0]][ownProps.location[1]]);
+  return({cells});
+};
 export default connect(mapStateToProps, null)(PencilCell);
