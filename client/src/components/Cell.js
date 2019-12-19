@@ -21,7 +21,7 @@ function Cell(props) {
 
   return (
     <div className="cell" onClick={setLocation} style={backgroundColor}>
-      <PencilCell origCell={origCell}/>
+      <PencilCell origCell={origCell} location={props.location}/>
       <div className="cell-number">{origCell ? <strong>{props.num}</strong> : props.num}</div>
     </div>
   );

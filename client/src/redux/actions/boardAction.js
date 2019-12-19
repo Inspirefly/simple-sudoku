@@ -21,7 +21,9 @@ export const fetchSolved = (num, difficulty) => dispatch => {
 export const inputNum = num => (dispatch, getState) => {
   const location = getState().cells.selectedCell;
   let user = JSON.parse(JSON.stringify(getState().puzzles.user));
-  if (getState().cells.cellSelected && getState().puzzles.unsolved[location[0]][location[1]] === ' ')
+  if (user[location[0]][location[1]] == num)
+    user[location[0]][location[1]] = ' ';
+  else if (getState().cells.cellSelected && getState().puzzles.unsolved[location[0]][location[1]] === ' ')
     user[location[0]][location[1]] = num;
   dispatch({
     type: INPUT_NUM,

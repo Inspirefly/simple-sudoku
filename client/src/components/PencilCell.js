@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import uuidv4 from 'uuid/v4';
 import '../css/PencilCell.css';
 
@@ -11,9 +12,7 @@ function PencilCell(props) {
     display.opacity = '0.0';
   }
 
-  let cells = [' ', ' ', ' ',
-               ' ', ' ', ' ',
-               ' ', ' ', ' '];
+  const cells = props.pencilCells[props.location[0]][props.location[1]];
   const cellItems = cells.map(num => (
     <div key={uuidv4()}>{num === ' ' ? '\xA0' : num}</div>
   ));
@@ -25,4 +24,5 @@ function PencilCell(props) {
   );
 }
 
-export default PencilCell;
+const mapStateToProps = state => ({pencilCells: state.cells.pencilCells});
+export default connect(mapStateToProps, null)(PencilCell);
