@@ -6,13 +6,11 @@ import '../css/Board.css';
 import { fetchUnsolved, fetchSolved } from '../redux/actions/boardAction';
 
 function Board(props)  {
-  // Difficulty should really be a state in redux store, but too much setup rn, should change esp. when i get to buttons
-  const [difficulty, setDifficulty] = useState('easy');
-
   useEffect(() => {
+    const difficulty = 'easy';
     let num = Math.floor((Math.random() * 100) + 1);
     num = ("000" + num).slice(-3);
-    console.log(`Puzzle No: ${num}`);
+    console.log(`${difficulty} puzzle no: ${num}`);
     props.fetchUnsolved(num, difficulty);
     props.fetchSolved(num, difficulty);
   }, []);
