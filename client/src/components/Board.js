@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import uuidv4 from 'uuid/v4';
 import Box from './Box';
@@ -40,6 +40,5 @@ function Board(props)  {
   );
 }
 
-const mapStateToProps = state => ({solved: state.puzzles.solved});
 const mapDispatchToProps = {fetchUnsolved, fetchSolved};
-export default connect(mapStateToProps, mapDispatchToProps)(Board);
+export default connect(null, mapDispatchToProps)(Board);
